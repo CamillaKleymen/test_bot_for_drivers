@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 
-# Настройка логирования
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -18,19 +18,19 @@ logger = logging.getLogger(__name__)
 API_TOKEN = '7919571616:AAHXJ3GSWxp4DnrpChOM79cxd9KAm-aTo4g'
 bot = telebot.TeleBot(API_TOKEN)
 
-# Email конфигурация
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'camillakleymen@gmail.com'  # Замените на вашу почту Gmail
-EMAIL_HOST_PASSWORD = 'muxtar15ovchar'  # Замените на пароль приложения Gmail
-EMAIL_RECIPIENT = 'camillakleymen@gmail.com'  # Замените на почту получателя
+EMAIL_HOST_USER = 'camillakleymen@gmail.com'
+EMAIL_HOST_PASSWORD = 'muxtar15ovchar'
+EMAIL_RECIPIENT = 'camillakleymen@gmail.com'
 
-# Словарь для хранения временных данных пользователей
+
 user_states = {}
 
 
 def get_user_info(user_id):
-    """Получает информацию о пользователе из базы данных"""
+
     try:
         cursor = db.cursor
         cursor.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
@@ -41,7 +41,7 @@ def get_user_info(user_id):
 
 
 def format_order_email(user_id, cart_items, total):
-    """Форматирует текст письма для заказа"""
+
     user_info = get_user_info(user_id)
     if not user_info:
         return None
@@ -68,7 +68,7 @@ def format_order_email(user_id, cart_items, total):
 
 
 def send_order_email(user_id, cart_items, total):
-    """Отправляет email с информацией о заказе"""
+
     try:
         msg = MIMEMultipart()
         msg['From'] = EMAIL_HOST_USER

@@ -29,7 +29,7 @@ class Database:
             total_price REAL)''')
         self.conn.commit()
 
-    # Методы для работы с пользователями
+
     def add_user(self, user_id, user_name, user_phone_number):
         self.cursor.execute("INSERT INTO users (user_id, name, phone_number, reg_date) VALUES (?, ?, ?, ?);",
                             (user_id, user_name, user_phone_number, datetime.now()))
@@ -74,7 +74,7 @@ class Database:
         self.cursor.execute("UPDATE products SET pr_quantity=? WHERE pr_id=?;", (new_quantity, pr_id))
         self.conn.commit()
 
-    # Методы для работы с корзиной
+
     def add_to_cart(self, user_id, pr_id, pr_name, pr_count):
         total_price = pr_count * self.get_exact_product(pr_id)[1]
         self.cursor.execute("INSERT INTO cart (user_id, pr_id, pr_name, pr_count, total_price) VALUES (?,?,?,?,?);",
@@ -93,7 +93,7 @@ class Database:
         self.cursor.execute("SELECT pr_name, pr_count, total_price FROM cart WHERE user_id=?;", (user_id,))
         return self.cursor.fetchall()
 
-    # Добавление тестовых продуктов
+
     def add_test_products(self):
         test_products = [
             ("Продукт 1", 100.0, 10, "Описание 1", "photo1.jpg"),
@@ -107,8 +107,8 @@ class Database:
         self.conn.commit()
         print("Тестовые продукты добавлены в базу данных")
 
-# Инициализация базы данных
+
 db = Database()
 
-# Добавить тестовые продукты (выполняется один раз)
+
 db.add_test_products()

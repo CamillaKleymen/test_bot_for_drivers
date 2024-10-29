@@ -82,6 +82,3 @@ class Keyboard:
             markup.add(button)
         return markup
 
-# Пример использования класса
-# keyboard = Keyboard()
-# main_menu_kb = keyboard.main_menu()
