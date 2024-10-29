@@ -21,9 +21,7 @@ bot = telebot.TeleBot(API_TOKEN)
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'camillakleymen@gmail.com'
-EMAIL_HOST_PASSWORD = 'muxtar15ovchar'
-EMAIL_RECIPIENT = 'camillakleymen@gmail.com'
+# прописать почту и пароль ?
 
 
 user_states = {}
