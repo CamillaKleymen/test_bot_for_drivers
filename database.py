@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 
 class Database:
-    def __init__(self, db_path='kfc.db'):
+    def __init__(self, db_path='prod.db'):
         self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
         self.create_tables()

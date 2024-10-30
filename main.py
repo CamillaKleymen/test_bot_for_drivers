@@ -21,7 +21,9 @@ bot = telebot.TeleBot(API_TOKEN)
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-# прописать почту и пароль ?
+EMAIL_HOST_USER = "camillakleymen@gmail.com"
+EMAIL_HOST_PASSWORD = "zqrz tgqi zgpt yvyp"
+EMAIL_RECIPIENT = "camillakleymen@gmail.com"
 
 
 user_states = {}
@@ -59,9 +61,9 @@ def format_order_email(user_id, cart_items, total):
     """
 
     for item in cart_items:
-        message_text += f"- {item[0]}: {item[1]} шт. × {item[2] / item[1]}₽ = {item[2]}₽\n"
+        message_text += f"- {item[0]}: {item[1]} шт. × {item[2] / item[1]}сум = {item[2]}сум\n"
 
-    message_text += f"\nИтоговая сумма заказа: {total}₽"
+    message_text += f"\nИтоговая сумма заказа: {total}сум"
     return message_text
 
 
@@ -219,7 +221,7 @@ def show_products(message):
         for product in products:
             product_id, name, price = product[0], product[1], product[2]
             button = types.InlineKeyboardButton(
-                f"{name} - {price}₽",
+                f"{name} - {price}сум",
                 callback_data=f"add_to_cart_{product_id}"
             )
             keyboard.add(button)
@@ -284,8 +286,8 @@ def show_cart(message):
         total = sum(item[2] for item in cart_items)
         cart_text = "🛒 Ваша корзина:\n\n"
         for item in cart_items:
-            cart_text += f"• {item[0]} x{item[1]} = {item[2]}₽\n"
-        cart_text += f"\n💰 Итого: {total}₽"
+            cart_text += f"• {item[0]} x{item[1]} = {item[2]}сум\n"
+        cart_text += f"\n💰 Итого: {total}сум"
 
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         keyboard.add(
@@ -350,7 +352,7 @@ def process_order(message):
         # Очищаем корзину после оформления заказа
         db.delete_user_cart(user_id)
 
-        success_message = f"✅ Ваш заказ на сумму {total}₽ успешно оформлен!\n"
+        success_message = f"✅ Ваш заказ на сумму {total}сум успешно оформлен!\n"
         if email_sent:
             success_message += "Подтверждение заказа отправлено администратору.\n"
         success_message += "Мы свяжемся с вами в ближайшее время для подтверждения."

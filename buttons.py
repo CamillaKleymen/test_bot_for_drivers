@@ -78,7 +78,7 @@ class Keyboard:
     def product_buttons(products):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         for product in products:
-            button = types.KeyboardButton(f"{product[1]} - {product[2]} руб. (ID: {product[0]})")
+            button = types.KeyboardButton(f"{product[1]} - {product[2]} сум. (ID: {product[0]})")
             markup.add(button)
         return markup
 
