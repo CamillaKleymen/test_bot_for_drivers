@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Конфигурация бота и email
-API_TOKEN = '7792092390:AAFR9KZDvsehIz03fkBeUp2Kb024tGrC3j4'
+API_TOKEN = '7919571616:AAHXJ3GSWxp4DnrpChOM79cxd9KAm-aTo4g'
 bot = telebot.TeleBot(API_TOKEN)
 
 EMAIL_HOST = 'smtp.gmail.com'
